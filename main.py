@@ -126,6 +126,7 @@ def search_songs():
 def get_search_songs():
     song_title=request.forms.get('Song_title')
     prod_year=request.forms.get('Prod_year')
+    
     company=request.forms.get('Company')
 
 @get('/insert_artist')
@@ -204,7 +205,8 @@ def insert_song():
 
 
                     <tr>
-                        <td> <span align="letf">CD</span></td>
+                      		<input type="radio" name="type" value="Singer"> Singer <br>
+        <td> <span align="letf">CD</span></td>
                         <td> <input align="right" type="text" name="Surname" value=""> </td>
                     </tr>
 
