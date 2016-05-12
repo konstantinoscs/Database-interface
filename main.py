@@ -253,7 +253,7 @@ def test():
 
     connection = pymysql.connect(host='localhost',
                              user='root',
-                             password='sdi1400192',
+                             password=' ',
                              db='songs',
                              charset='utf8',
                              cursorclass=pymysql.cursors.DictCursor)
@@ -272,10 +272,13 @@ def test():
             # Read a single record
             sql = "SELECT `cd` FROM `singer_prod`"
             cursor.execute(sql)
-            result = cursor.fetchone()
-            print(result)
+            #result = cursor.fetchone()
+            #print(result)
+            for row in cursor:
+                print(row)
     finally:
         connection.close()
 
 
-run(host='localhost', port=8080, debug=True)
+#run(host='localhost', port=8080, debug=True)
+test()
