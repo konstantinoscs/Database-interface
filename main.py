@@ -1,3 +1,5 @@
+#!/usr/bin/env python
+# -*- coding: utf-8 -*-
 
 from bottle import get, post, request, run, route
 import pymysql.cursors
@@ -268,7 +270,7 @@ def test():
 
         with connection.cursor() as cursor:
             # Read a single record
-            sql = "SELECT `ar_taut`, `onoma` FROM `kalitexnis`"
+            sql = "SELECT `cd` FROM `singer_prod`"
             cursor.execute(sql)
             result = cursor.fetchone()
             print(result)
