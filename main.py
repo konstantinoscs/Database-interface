@@ -1,5 +1,6 @@
 
 from bottle import get, post, request, run, route
+import pymysql.cursors
 
 @route('/')
 @route('/home')
@@ -126,7 +127,6 @@ def search_songs():
 def get_search_songs():
     song_title=request.forms.get('Song_title')
     prod_year=request.forms.get('Prod_year')
-    
     company=request.forms.get('Company')
 
 @get('/insert_artist')
@@ -245,6 +245,35 @@ def insert_song():
 def get_insert_songs():
     title=request.forms.get('Title')
     prod_year=request.forms.get('Prod_year')
+
+def test():
+
+
+    connection = pymysql.connect(host='localhost',
+                             user='root',
+                             password='sdi1400192',
+                             db='songs',
+                             charset='utf8',
+                             cursorclass=pymysql.cursors.DictCursor)
+
+    try:
+        #with connection.cursor() as cursor:
+            # Create a new record
+            #sql = "INSERT INTO `users` (`email`, `password`) VALUES (%s, %s)"
+            #cursor.execute(sql, ('webmaster@python.org', 'very-secret'))
+
+    # connection is not autocommit by default. So you must commit to save
+    # your changes.
+        #connection.commit()
+
+        with connection.cursor() as cursor:
+            # Read a single record
+            sql = "SELECT `ar_taut`, `onoma` FROM `kalitexnis`"
+            cursor.execute(sql)
+            result = cursor.fetchone()
+            print(result)
+    finally:
+        connection.close()
 
 
 run(host='localhost', port=8080, debug=True)
