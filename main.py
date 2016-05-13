@@ -317,7 +317,7 @@ def test2():
 
     connection = pymysql.connect(host='localhost',
                                  user='root',
-                                 password=' ',
+                                 password='',
                                  db='songs',
                                  charset='utf8',
                                  cursorclass=pymysql.cursors.DictCursor)
@@ -343,6 +343,6 @@ def test2():
     finally:
         connection.close()
 
-run(host='localhost', port=8080, debug=True)
-test()
-#test2()
+#run(host='localhost', port=8080, debug=True)
+#test()
+test2()
