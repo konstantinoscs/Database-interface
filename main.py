@@ -77,12 +77,43 @@ def update():
 
 @post('/update_n_search')
 def get_data_update():
-    name=request.forms.get('Name')
-    surname=request.forms.get('Surname')
-    birth_year_from=request.forms.get('Birth_year_from')
-    birth_year_to=request.forms.get('Birth_year_to')
-    type=request.forms.get('type')
+    print('bhka')
+    name=request.forms.getunicode('Name')
+    surname=request.forms.getunicode('Surname')
+    birth_year_from=request.forms.getunicode('Birth_year_from')
+    birth_year_to=request.forms.getunicode('Birth_year_to')
+    type=request.forms.getunicode('type')
 
+
+
+    connection = pymysql.connect(host='localhost',
+                                 user='root',
+                                 password=' ',
+                                 db='songs',
+                                 charset='utf8',
+                                 cursorclass=pymysql.cursors.DictCursor)
+
+
+    try:
+        # with connection.cursor() as cursor:
+        # Create a new record
+        # sql = "INSERT INTO `users` (`email`, `password`) VALUES (%s, %s)"
+        # cursor.execute(sql, ('webmaster@python.org', 'very-secret'))
+
+        # connection is not autocommit by default. So you must commit to save
+        # your changes.
+        # connection.commit()
+
+        with connection.cursor() as cursor:
+            # Read a single record
+            sql = "SELECT `onoma`,`epitheto`,`ar_taut`,`etos_gen` FROM `kalitexnis` WHERE `onoma`=%s AND `epitheto`=%s"
+            cursor.execute(sql, (name, surname))
+            # result = cursor.fetchone()
+            # print(result)
+            for row in cursor:
+                print(row)
+    finally:
+        connection.close()
 
 
 @get('/search_songs')
@@ -280,5 +311,38 @@ def test():
         connection.close()
 
 
-#run(host='localhost', port=8080, debug=True)
-test()
+def test2():
+    name = 'ΓΙΑΝΝΗΣ'
+    surname = 'ΣΠΑΝΟΣ'
+
+    connection = pymysql.connect(host='localhost',
+                                 user='root',
+                                 password=' ',
+                                 db='songs',
+                                 charset='utf8',
+                                 cursorclass=pymysql.cursors.DictCursor)
+
+    try:
+        # with connection.cursor() as cursor:
+        # Create a new record
+        # sql = "INSERT INTO `users` (`email`, `password`) VALUES (%s, %s)"
+        # cursor.execute(sql, ('webmaster@python.org', 'very-secret'))
+
+        # connection is not autocommit by default. So you must commit to save
+        # your changes.
+        # connection.commit()
+
+        with connection.cursor() as cursor:
+            # Read a single record
+            sql = "SELECT `onoma`,`epitheto`,`ar_taut`,`etos_gen` FROM `kalitexnis` WHERE `onoma`=%s AND `epitheto`=%s"
+            cursor.execute(sql, (name, surname))
+            # result = cursor.fetchone()
+            # print(result)
+            for row in cursor:
+                print(row)
+    finally:
+        connection.close()
+
+run(host='localhost', port=8080, debug=True)
+#test()
+#test2()
