@@ -2,7 +2,8 @@
 # -*- coding: utf-8 -*-
 
 from bottle import get, post, request, run, route
-import connection
+from connection import connection
+import pymysql.cursors
 
 @route('/')
 @route('/home')
@@ -297,7 +298,9 @@ def test():
 
 def test2():
     name = 'ΓΙΑΝΝΗΣ'
-    surname = 'ΣΠΑΝΟΣ'
+    surname = 'ΠΑΠ'
+
+    con = connection()
 
     try:
         # with connection.cursor() as cursor:
@@ -309,7 +312,7 @@ def test2():
         # your changes.
         # connection.commit()
 
-        with connection.cursor() as cursor:
+        with con.cursor() as cursor:
             # Read a single record
             sql = "SELECT `onoma`,`epitheto`,`ar_taut`,`etos_gen` FROM `kalitexnis` WHERE `onoma`=%s AND `epitheto`=%s"
             cursor.execute(sql, (name, surname))
@@ -318,8 +321,8 @@ def test2():
             for row in cursor:
                 print(row)
     finally:
-        connection.close()
+        con.close()
 
-run(host='localhost', port=8080, debug=True)
+#run(host='localhost', port=8080, debug=True)
 #test()
-#test2()
+test2()

@@ -1,4 +1,5 @@
-import pymysql
+# -*- coding: utf-8 -*-
+import pymysql.cursors
 import settings
 
 def connection():
@@ -6,5 +7,7 @@ def connection():
         settings.mysql_host,
         settings.mysql_user,
         settings.mysql_passwd,
-        settings.mysql_schema)
+        settings.mysql_schema,
+        charset='utf8')
+
     return con
