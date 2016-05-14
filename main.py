@@ -86,15 +86,6 @@ def get_data_update():
     type=request.forms.getunicode('type')
 
 
-
-    connection = pymysql.connect(host='localhost',
-                                 user='root',
-                                 password='sdi1400192',
-                                 db='songs',
-                                 charset='utf8',
-                                 cursorclass=pymysql.cursors.DictCursor)
-
-
     try:
         # with connection.cursor() as cursor:
         # Create a new record
@@ -282,14 +273,6 @@ def get_insert_songs():
 
 def test():
 
-
-    connection = pymysql.connect(host='localhost',
-                             user='root',
-                             password='sdi1400192',
-                             db='songs',
-                             charset='utf8',
-                             cursorclass=pymysql.cursors.DictCursor)
-
     try:
         #with connection.cursor() as cursor:
             # Create a new record
@@ -315,13 +298,6 @@ def test():
 def test2():
     name = 'ΓΙΑΝΝΗΣ'
     surname = 'ΣΠΑΝΟΣ'
-
-    connection = pymysql.connect(host='localhost',
-                                 user='root',
-                                 password='',
-                                 db='songs',
-                                 charset='utf8',
-                                 cursorclass=pymysql.cursors.DictCursor)
 
     try:
         # with connection.cursor() as cursor:
