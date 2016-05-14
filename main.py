@@ -106,6 +106,7 @@ def get_data_update():
 @get('/search_songs')
 def search_songs():
     return '''
+        <meta charset = "utf-8"/>
         <div>
             <div style="font-size:200%;"><strong>Presentation of Songs</strong></div>
             <br>
@@ -146,16 +147,16 @@ def search_songs():
 
 @post('/search_songs')
 def get_search_songs():
-    title = request.forms.get('Song_title')
-    year = request.forms.get('Prod_year')
-    company = request.forms.get('Company')
+    title = request.forms.getunicode('Song_title')
+    year = request.forms.getunicode('Prod_year')
+    company = request.forms.getunicode('Company')
     year = int(year)
     data = find_song(title, year, company)
-    str = qq(data)
-    return str
+    st = create_table(data)
+    return st
 
 
-@route('results/')
+@route('/results')
 def post_songs(data):
     return data
 
@@ -269,7 +270,7 @@ def insert_song():
             </fieldset>
         </form>
     </div>
-'''
+    '''
 
 @post('/insert_song')
 def get_insert_songs():
@@ -280,14 +281,6 @@ def test():
 
     con = connection()
     try:
-        #with connection.cursor() as cursor:
-            # Create a new record
-            #sql = "INSERT INTO `users` (`email`, `password`) VALUES (%s, %s)"
-            #cursor.execute(sql, ('webmaster@python.org', 'very-secret'))
-
-    # connection is not autocommit by default. So you must commit to save
-    # your changes.
-        #connection.commit()
 
         with con.cursor() as cursor:
             sql = "SELECT `cd` FROM `singer_prod`"
