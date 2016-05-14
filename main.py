@@ -78,6 +78,7 @@ def update():
 @post('/update_n_search')
 def get_data_update():
     print('bhka')
+
     name=request.forms.getunicode('Name')
     surname=request.forms.getunicode('Surname')
     birth_year_from=request.forms.getunicode('Birth_year_from')
@@ -88,7 +89,7 @@ def get_data_update():
 
     connection = pymysql.connect(host='localhost',
                                  user='root',
-                                 password=' ',
+                                 password='sdi1400192',
                                  db='songs',
                                  charset='utf8',
                                  cursorclass=pymysql.cursors.DictCursor)
@@ -343,6 +344,6 @@ def test2():
     finally:
         connection.close()
 
-#run(host='localhost', port=8080, debug=True)
+run(host='localhost', port=8080, debug=True)
 #test()
-test2()
+#test2()
