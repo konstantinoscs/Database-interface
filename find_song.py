@@ -16,7 +16,7 @@ def find_song(title, year, company):
     finally:
         con.close()
 
-    return data
+    return
 
 
 def create_table(data):
