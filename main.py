@@ -3,7 +3,6 @@
 
 from bottle import get, post, request, run, route
 from connection import connection
-import pymysql.cursors
 
 @route('/')
 @route('/home')
@@ -26,7 +25,7 @@ def home_page():
     <input type="submit" value="INSERT SONG">
     </form>
     </div>
-'''
+    '''
 
 @get('/update_n_search')
 def update():
@@ -86,18 +85,12 @@ def get_data_update():
     birth_year_to=request.forms.getunicode('Birth_year_to')
     type=request.forms.getunicode('type')
 
+    con = connection()
 
     try:
-        # with connection.cursor() as cursor:
-        # Create a new record
-        # sql = "INSERT INTO `users` (`email`, `password`) VALUES (%s, %s)"
-        # cursor.execute(sql, ('webmaster@python.org', 'very-secret'))
 
-        # connection is not autocommit by default. So you must commit to save
-        # your changes.
-        # connection.commit()
 
-        with connection.cursor() as cursor:
+        with con.cursor() as cursor:
             # Read a single record
             sql = "SELECT `onoma`,`epitheto`,`ar_taut`,`etos_gen` FROM `kalitexnis` WHERE `onoma`=%s AND `epitheto`=%s"
             cursor.execute(sql, (name, surname))
@@ -106,7 +99,7 @@ def get_data_update():
             for row in cursor:
                 print(row)
     finally:
-        connection.close()
+        con.close()
 
 
 @get('/search_songs')
@@ -151,9 +144,9 @@ def search_songs():
 
 @post('/search_songs')
 def get_search_songs():
-    song_title=request.forms.get('Song_title')
-    prod_year=request.forms.get('Prod_year')
-    company=request.forms.get('Company')
+    song_title = request.forms.get('Song_title')
+    prod_year = request.forms.get('Prod_year')
+    company = request.forms.get('Company')
 
 @get('/insert_artist')
 def insert_artist():
@@ -285,7 +278,6 @@ def test():
         #connection.commit()
 
         with connection.cursor() as cursor:
-            # Read a single record
             sql = "SELECT `cd` FROM `singer_prod`"
             cursor.execute(sql)
             #result = cursor.fetchone()
@@ -297,8 +289,8 @@ def test():
 
 
 def test2():
-    name = 'ΓΙΑΝΝΗΣ'
-    surname = 'ΠΑΠ'
+    name = ''
+    surname = ''
 
     con = connection()
 
@@ -323,6 +315,6 @@ def test2():
     finally:
         con.close()
 
-#run(host='localhost', port=8080, debug=True)
+run(host='localhost', port=8080, debug=True)
 #test()
-test2()
+#test2()
