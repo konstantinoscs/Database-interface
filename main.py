@@ -2,7 +2,7 @@
 # -*- coding: utf-8 -*-
 
 from bottle import get, post, request, run, route
-import pymysql.cursors
+import connection
 
 @route('/')
 @route('/home')
