@@ -1,5 +1,5 @@
 # -*- coding: utf-8 -*-
-import pymysql.cursors
+import pymysql
 import settings
 
 def connection():

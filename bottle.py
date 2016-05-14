@@ -3376,6 +3376,7 @@ class SimpleTemplate(BaseTemplate):
         return self.cache[_name].execute(env['_stdout'], env)
 
     def execute(self, _stdout, kwargs):
+        # type: (object, object) -> object
         env = self.defaults.copy()
         env.update(kwargs)
         env.update({'_stdout': _stdout, '_printlist': _stdout.extend,

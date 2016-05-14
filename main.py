@@ -1,8 +1,10 @@
 #!/usr/bin/env python
 # -*- coding: utf-8 -*-
 
-from bottle import get, post, request, run, route
+from bottle import get, post, request, run, route, redirect
 from connection import connection
+from find_song import *
+
 
 @route('/')
 @route('/home')
@@ -89,7 +91,6 @@ def get_data_update():
 
     try:
 
-
         with con.cursor() as cursor:
             # Read a single record
             sql = "SELECT `onoma`,`epitheto`,`ar_taut`,`etos_gen` FROM `kalitexnis` WHERE `onoma`=%s AND `epitheto`=%s"
@@ -109,7 +110,7 @@ def search_songs():
             <div style="font-size:200%;"><strong>Presentation of Songs</strong></div>
             <br>
 
-            <form>
+            <form method="POST" action="/search_songs">
                 <fieldset>
                     <table style="">
                         <tr>
@@ -142,11 +143,22 @@ def search_songs():
     </div>
 '''
 
+
 @post('/search_songs')
 def get_search_songs():
-    song_title = request.forms.get('Song_title')
-    prod_year = request.forms.get('Prod_year')
+    title = request.forms.get('Song_title')
+    year = request.forms.get('Prod_year')
     company = request.forms.get('Company')
+    year = int(year)
+    data = find_song(title, year, company)
+    str = qq(data)
+    return str
+
+
+@route('results/')
+def post_songs(data):
+    return data
+
 
 @get('/insert_artist')
 def insert_artist():
@@ -154,7 +166,6 @@ def insert_artist():
     <div>
         <div style="font-size:200%;"><strong>Insert Artist</strong></div>
         <br>
-
         <form>
             <fieldset>
                 <table style="">
@@ -224,8 +235,8 @@ def insert_song():
 
 
                     <tr>
-                      		<input type="radio" name="type" value="Singer"> Singer <br>
-        <td> <span align="letf">CD</span></td>
+                        <input type="radio" name="type" value="Singer"> Singer <br>
+                        <td> <span align="letf">CD</span></td>
                         <td> <input align="right" type="text" name="Surname" value=""> </td>
                     </tr>
 
@@ -267,6 +278,7 @@ def get_insert_songs():
 
 def test():
 
+    con = connection()
     try:
         #with connection.cursor() as cursor:
             # Create a new record
@@ -277,7 +289,7 @@ def test():
     # your changes.
         #connection.commit()
 
-        with connection.cursor() as cursor:
+        with con.cursor() as cursor:
             sql = "SELECT `cd` FROM `singer_prod`"
             cursor.execute(sql)
             #result = cursor.fetchone()
@@ -285,12 +297,12 @@ def test():
             for row in cursor:
                 print(row)
     finally:
-        connection.close()
+        con.close()
 
 
 def test2():
-    name = ''
-    surname = ''
+    name = 'ΓΙΑΝΝΗΣ'
+    surname = 'ΣΠΑΝΟΣ'
 
     con = connection()
 
@@ -306,8 +318,8 @@ def test2():
 
         with con.cursor() as cursor:
             # Read a single record
-            sql = "SELECT `onoma`,`epitheto`,`ar_taut`,`etos_gen` FROM `kalitexnis` WHERE `onoma`=%s AND `epitheto`=%s"
-            cursor.execute(sql, (name, surname))
+            sql = "SELECT `onoma`,`epitheto`,`ar_taut`,`etos_gen` FROM `kalitexnis`"
+            cursor.execute(sql)
             # result = cursor.fetchone()
             # print(result)
             for row in cursor:
@@ -318,3 +330,4 @@ def test2():
 run(host='localhost', port=8080, debug=True)
 #test()
 #test2()
+#find_song('ΦΡΑΓΚΟΣΥΡΙΑΝΗ', 1938, 'k')
