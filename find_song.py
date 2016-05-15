@@ -15,7 +15,8 @@ def find_song(title, year, company):
             cursor.execute(sql, (title, year, company))
             data = cursor.fetchall()
             for row in data:
-                print (str(row))
+                for i in row:
+                    print i.encode('utf-8')
 
     finally:
         con.close()
@@ -28,7 +29,7 @@ def create_table(data):
     for row in data:
         st += "<tr>"
         for i in row:
-            st += "<td>" + str(i) + "</td>"
+            st += "<td>" + i.encode('utf-8') + "</td>"
         st += "</tr>"
     st += "</table>"
 
