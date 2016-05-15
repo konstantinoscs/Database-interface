@@ -79,8 +79,6 @@ def update():
 
 @post('/update_n_search')
 def get_data_update():
-    print('bhka')
-
     name=request.forms.getunicode('Name')
     surname=request.forms.getunicode('Surname')
     birth_year_from=request.forms.getunicode('Birth_year_from')
@@ -210,39 +208,38 @@ def insert_song():
             <fieldset>
                 <table style="">
                     <tr>
-                        <td> <span align="left">Title</span></td>
-                        <td> <input align="right" type="text" name="Title" value=""> </td>
+                        <td>Title</td>
+                        <td> <input type="text" name="Title" value=""> </td>
                     </tr>
 
 
                     <tr>
-                        <td> <span align="left">Production Year</span></td>
-                        <td> <input align="right" type="text" name="Prod_year" value=""> </td>
+                        <td> Production Year</td>
+                        <td> <input type="text" name="Prod_year" value=""> </td>
                     </tr>
 
 
                     <tr>
-                        <input type="radio" name="type" value="Singer"> Singer <br>
-                        <td> <span align="letf">CD</span></td>
-                        <td> <input align="right" type="text" name="Surname" value=""> </td>
+                        <td>CD</td>
+                        <td> <input type="text" name="CD" value=""> </td>
                     </tr>
 
 
                     <tr>
-                        <td> <span align="left">Singer</span></td>
-                        <td> <input align="right" type="number" name="Birth_year" min="1900" max="2016"> </td>
+                        <td>Singer</td>
+                        <td> <input type="number" name="Birth_year" min="1900" max="2016"> </td>
                     </tr>
 
 
                     <tr>
-                        <td> <span align="left">Composer</span></td>
-                        <td> <input align="right" type="number" name="Birth_year" min="1900" max="2016"> </td>
+                        <td>Composer</td>
+                        <td> <input type="number" name="Birth_year" min="1900" max="2016"> </td>
                     </tr>
 
 
                     <tr>
-                        <td> <span align="left">Song Writer</span></td>
-                        <td> <input align="right" type="number" name="Birth_year" min="1900" max="2016"> </td>
+                        <td>Song Writer</td>
+                        <td> <input type="number" name="Birth_year" min="1900" max="2016"> </td>
                     </tr>
 
 
