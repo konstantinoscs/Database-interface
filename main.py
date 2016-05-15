@@ -1,7 +1,7 @@
 #!/usr/bin/env python
 # -*- coding: utf-8 -*-
 
-from bottle import get, post, request, run, route, redirect
+from bottle import get, post, request, run, route
 from home_page import *
 from search_songs import*
 
