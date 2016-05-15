@@ -8,6 +8,11 @@ def connection():
         settings.mysql_user,
         settings.mysql_passwd,
         settings.mysql_schema,
-        charset='utf8')
+        charset="utf8",
+        use_unicode=True)
+    con.set_charset('utf8')
+    con.cursor().execute('SET NAMES utf8;')
+    con.cursor().execute('SET CHARACTER SET utf8;')
+    con.cursor().execute('SET character_set_connection=utf8;')
 
     return con

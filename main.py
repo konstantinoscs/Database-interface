@@ -88,6 +88,7 @@ def get_data_update():
 
     con = connection()
 
+
     try:
 
         with con.cursor() as cursor:
@@ -319,7 +320,9 @@ def test2():
     finally:
         con.close()
 
-run(host='localhost', port=8080, debug=True)
+#run(host='localhost', port=8080, debug=True)
 #test()
 #test2()
-#find_song('ΦΡΑΓΚΟΣΥΡΙΑΝΗ', 1938, 'k')
+data=find_song('ΦΡΑΓΚΟΣΥΡΙΑΝΗ', 1938, 'COLUMBIA')
+st=create_table(data)
+print (st)
