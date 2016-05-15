@@ -2,7 +2,6 @@
 # -*- coding: utf-8 -*-
 
 from bottle import get, post, request, run, route, redirect
-from connection import connection
 from find_song import *
 
 
