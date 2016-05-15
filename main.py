@@ -188,52 +188,7 @@ def get_insert_songs():
     title=request.forms.get('Title')
     prod_year=request.forms.get('Prod_year')
 
-def test():
-
-    con = connection()
-    try:
-
-        with con.cursor() as cursor:
-            sql = "SELECT `cd` FROM `singer_prod`"
-            cursor.execute(sql)
-            #result = cursor.fetchone()
-            #print(result)
-            for row in cursor:
-                print row
-    finally:
-        con.close()
-
-
-def test2():
-    name = 'ΓΙΑΝΝΗΣ'
-    surname = 'ΣΠΑΝΟΣ'
-
-    con = connection()
-
-    try:
-        # with connection.cursor() as cursor:
-        # Create a new record
-        # sql = "INSERT INTO `users` (`email`, `password`) VALUES (%s, %s)"
-        # cursor.execute(sql, ('webmaster@python.org', 'very-secret'))
-
-        # connection is not autocommit by default. So you must commit to save
-        # your changes.
-        # connection.commit()
-
-        with con.cursor() as cursor:
-            # Read a single record
-            sql = "SELECT `onoma`,`epitheto`,`ar_taut`,`etos_gen` FROM `kalitexnis`"
-            cursor.execute(sql)
-            # result = cursor.fetchone()
-            # print(result)
-            for row in cursor:
-                print row
-    finally:
-        con.close()
-
 run(host='localhost', port=8080, debug=True)
-#test()
-#test2()
 #data=find_song('ΦΡΑΓΚΟΣΥΡΙΑΝΗ', 1938, 'COLUMBIA')
 #st=create_table(data)
 #print st
