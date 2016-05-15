@@ -162,7 +162,7 @@ def post_songs(data):
 
 
 @get('/insert_artist')
-def insert_artist():
+def insert_artist_form():
     return '''
     <div>
         <div style="font-size:200%;"><strong>Insert Artist</strong></div>
@@ -211,6 +211,7 @@ def get_insert_artist():
     name=request.forms.getunicode('Name')
     surname=request.forms.getunicode('Surname')
     birth_year=request.forms.getunicode('Birth_year')
+    birth_year = int(birth_year)
 
 
 @get('/insert_song')
