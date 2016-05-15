@@ -3,6 +3,7 @@
 
 from bottle import get, post, request, run, route, redirect
 from find_song import *
+import insert_artist
 
 
 @route('/')
@@ -33,44 +34,44 @@ def update():
     return '''
         <div>
         <div style="font-size:200%;"><strong>Presentation of Artists</strong></div>
-		<br>
+        <br>
 
         <form>
         <fieldset>
-			<table style="">
-				<tr>
-					<td> <span align="left">Name </span></td>
-					<td> <input align="right" type="text" name="Name" value=""></td>
-				</tr>
+            <table style="">
+                <tr>
+                    <td> <span align="left">Name </span></td>
+                    <td> <input align="right" type="text" name="Name" value=""></td>
+                </tr>
 
-				<tr>
-					<td> <span align="left"> Surname </span></td>
-					<td> <input align="right" type="text" name="Surname" value=""> </td>
-				</tr>
+                <tr>
+                    <td> <span align="left"> Surname </span></td>
+                    <td> <input align="right" type="text" name="Surname" value=""> </td>
+                </tr>
 
-				<tr>
-        			<td>Birth Year - From</td>
-					<td> <input type="text" name="Birth_year_from" value=""> </td>
-				</tr>
+                <tr>
+                    <td>Birth Year - From</td>
+                    <td> <input type="text" name="Birth_year_from" value=""> </td>
+                </tr>
 
-				<tr>
-					<td> Birth Year - To </td>
-					<td> <input type="text" name="Birth_year_to" value=""> </td>
-				</tr>
+                <tr>
+                    <td> Birth Year - To </td>
+                    <td> <input type="text" name="Birth_year_to" value=""> </td>
+                </tr>
 
-				<tr>
-					<td>Type</td>
-					<td>
-						<input type="radio" name="type" value="Singer"> Singer <br>
-        				<input type="radio" name="type" value="SongWriter"> SongWriter <br>
-        				<input type="radio" name="type" value="Composer"> Composer <br>
-					</td>
-				</tr>
-				<tr>
-					<td></td>
-					<td><input type="submit" value="Submit"></td>
-				</tr>
-			</table>
+                <tr>
+                    <td>Type</td>
+                    <td>
+                        <input type="radio" name="type" value="Singer"> Singer <br>
+                        <input type="radio" name="type" value="SongWriter"> SongWriter <br>
+                        <input type="radio" name="type" value="Composer"> Composer <br>
+                    </td>
+                </tr>
+                <tr>
+                <td></td>
+                    <td><input type="submit" value="Submit"></td>\
+                </tr>
+            </table>
         </fieldset>
         </form>
         </div>
