@@ -12,7 +12,7 @@ def update():
         <div style="font-size:200%;"><strong>Presentation of Artists</strong></div>
         <br>
 
-        <form>
+        <form method="POST" action="/update_n_search">
         <fieldset>
             <table style="">
                 <tr>
@@ -60,6 +60,7 @@ def get_data_update():
     birth_year_from=request.forms.getunicode('Birth_year_from')
     birth_year_to=request.forms.getunicode('Birth_year_to')
     type=request.forms.getunicode('type')
+    return "<div> ok </div>"
 
 
 @get('/search_songs')
