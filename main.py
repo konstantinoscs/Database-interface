@@ -4,6 +4,7 @@
 from bottle import get, post, request, run, route
 from home_page import *
 from search_songs import*
+from artists import *
 
 @get('/update_n_search')
 def update():
@@ -53,14 +54,17 @@ def update():
         </div>
         '''
 
+
 @post('/update_n_search')
 def get_data_update():
     name=request.forms.getunicode('Name')
     surname=request.forms.getunicode('Surname')
     birth_year_from=request.forms.getunicode('Birth_year_from')
     birth_year_to=request.forms.getunicode('Birth_year_to')
-    type=request.forms.getunicode('type')
-    return "<div> ok </div>"
+    ptype=request.forms.getunicode('type')
+    data = find_artists(name, surname, birth_year_from, birth_year_to, ptype)
+    st = render_artists_table(data)
+    return st
 
 
 @route('/results')
