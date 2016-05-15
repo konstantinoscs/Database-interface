@@ -14,3 +14,15 @@ def find_artists(name, surname, byear_from, byear_to, type):
             data = cursor.fetchall()
     finally:
         con.close()
+
+
+def render_artists_table(data):
+    st = '<meta charset = "utf-8"/> <table style=" ">'
+    st += "<h1>View Artist Results</h1><hr>" \
+          "<tr><td><strong>National Id</strong></td>" \
+          "<td><strong>Name</strong></td>" \
+          "<td><strong>Surname</strong></td>" \
+          "<td><strong>Birth Year</strong></td></tr>" \
+          "<td><strong>Edit?</strong></td>"
+
+    return st

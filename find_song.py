@@ -9,8 +9,10 @@ def find_song(title, year, company):
     con = connection()
     try:
         with con.cursor() as cursor:
-            sql = "select `titlos`, `sinthetis`, `etos_par`, `stixourgos` from `tragoudi`, `singer_prod`, `cd_production` " \
-                  "where `titlos` = `title` and `title` = %s and `etos_par` = %s and `etaireia` = %s and `cd` = `code_cd`" \
+            sql = "select `titlos`, `sinthetis`, `etos_par`, `stixourgos` " \
+                  "from `tragoudi`, `singer_prod`, `cd_production` " \
+                  "where `titlos` = `title` and `title` = %s and `etos_par` = %s and" \
+                  " `etaireia` = %s and `cd` = `code_cd`" \
                   "group by `titlos`"
             cursor.execute(sql, (title, year, company))
             data = cursor.fetchall()
