@@ -2,8 +2,8 @@
 # -*- coding: utf-8 -*-
 
 from bottle import get, post, request, run, route, redirect
-from find_song import *
 from home_page import *
+from search_songs import*
 
 @get('/update_n_search')
 def update():
@@ -61,59 +61,6 @@ def get_data_update():
     birth_year_to=request.forms.getunicode('Birth_year_to')
     type=request.forms.getunicode('type')
     return "<div> ok </div>"
-
-
-@get('/search_songs')
-def search_songs():
-    return '''
-        <meta charset = "utf-8"/>
-        <div>
-            <div style="font-size:200%;"><strong>Presentation of Songs</strong></div>
-            <br>
-
-            <form method="POST" action="/search_songs">
-                <fieldset>
-                    <table style="">
-                        <tr>
-                            <td> <span align="left">Song Title </span></td>
-                            <td> <input align="right" type="text" name="Song_title" value=""> </td>
-                        </tr>
-
-
-                        <tr>
-                            <td> <span align="left">Production Year</span></td>
-                            <td> <input align="right" type="text" name="Prod_year" value=""> </td>
-                        </tr>
-
-
-                        <tr>
-                            <td> <span align="letf">Company</span></td>
-                            <td> <input align="right" type="text" name="Company" value=""> </td>
-                        </tr>
-
-
-                        <tr>
-                            <td></td>
-                            <td> <input type="submit" value="Submit"> </td>
-                        </tr>
-
-
-                    </table>
-                </fieldset>
-            </form>
-    </div>
-    '''
-
-
-@post('/search_songs')
-def get_search_songs():
-    title = request.forms.getunicode('Song_title')
-    year = request.forms.getunicode('Prod_year')
-    company = request.forms.getunicode('Company')
-    year = int(year)
-    data = find_song(title, year, company)
-    st = create_table(data)
-    return st
 
 
 @route('/results')
