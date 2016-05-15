@@ -10,7 +10,8 @@ def find_song(title, year, company):
     try:
         with con.cursor() as cursor:
             sql = "select `title` from `tragoudi`, `singer_prod`, `cd_production` " \
-                  "where `titlos` = `title` and `title` = %s and `etos_par` = %s and `etaireia` = %s and `cd` = `code_cd`"
+                  "where `titlos` = `title` and `title` = %s and `etos_par` = %s and `etaireia` = %s and `cd` = `code_cd`" \
+                  "group by `titlos`"
             cursor.execute(sql, (title, year, company))
             data = cursor.fetchall()
             for row in data:
@@ -26,7 +27,8 @@ def create_table(data):
     st='<meta charset = "utf-8"/> <table style=" ">'
     for row in data:
         st += "<tr>"
-        st += "<td>" + str(row) + "</td>"
+        for i in row:
+            st += "<td>" + str(i) + "</td>"
         st += "</tr>"
     st += "</table>"
 

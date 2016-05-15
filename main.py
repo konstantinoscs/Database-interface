@@ -320,9 +320,9 @@ def test2():
     finally:
         con.close()
 
-#run(host='localhost', port=8080, debug=True)
+run(host='localhost', port=8080, debug=True)
 #test()
 #test2()
-data=find_song('ΦΡΑΓΚΟΣΥΡΙΑΝΗ', 1938, 'COLUMBIA')
-st=create_table(data)
-print (st)
+#data=find_song('ΦΡΑΓΚΟΣΥΡΙΑΝΗ', 1938, 'COLUMBIA')
+#st=create_table(data)
+#print (st)
