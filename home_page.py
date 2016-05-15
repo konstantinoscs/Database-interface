@@ -1,5 +1,9 @@
 # -*- coding: utf-8 -*-
 
+from bottle import route
+
+@route('/')
+@route('/home')
 def render_home_page():
     return '''
         <div>

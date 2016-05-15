@@ -4,13 +4,6 @@
 from bottle import get, post, request, run, route, redirect
 from find_song import *
 from home_page import *
-import insert_artist
-
-
-@route('/')
-@route('/home')
-def home():
-    return render_home_page()
 
 @get('/update_n_search')
 def update():
