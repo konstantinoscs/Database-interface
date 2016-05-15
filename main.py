@@ -87,22 +87,6 @@ def get_data_update():
     birth_year_to=request.forms.getunicode('Birth_year_to')
     type=request.forms.getunicode('type')
 
-    con = connection()
-
-
-    try:
-
-        with con.cursor() as cursor:
-            # Read a single record
-            sql = "SELECT `onoma`,`epitheto`,`ar_taut`,`etos_gen` FROM `kalitexnis` WHERE `onoma`=%s AND `epitheto`=%s"
-            cursor.execute(sql, (name, surname))
-            # result = cursor.fetchone()
-            # print(result)
-            for row in cursor:
-                print(row)
-    finally:
-        con.close()
-
 
 @get('/search_songs')
 def search_songs():
