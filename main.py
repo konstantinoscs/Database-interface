@@ -207,10 +207,10 @@ def insert_artist():
 
 @post('/insert_artist')
 def get_insert_artist():
-    national_id=request.forms.get('National_id')
-    name=request.forms.get('Name')
-    surname=request.forms.get('Surname')
-    birth_year=request.forms.get('Birth_year')
+    national_id=request.forms.getunicode('National_id')
+    name=request.forms.getunicode('Name')
+    surname=request.forms.getunicode('Surname')
+    birth_year=request.forms.getunicode('Birth_year')
 
 
 @get('/insert_song')
