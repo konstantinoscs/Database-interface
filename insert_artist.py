@@ -4,6 +4,7 @@ import pymysql
 from bottle import get, post, request
 from connection import *
 
+
 @get('/insert_artist')
 def insert_artist_form():
     return '''
@@ -59,6 +60,9 @@ def get_insert_artist():
     birth_year = int(birth_year)
     insert_artist(national_id,name,surname,birth_year)
 
+    st = render_success()
+    return st
+
 
 def insert_artist(id, name, surname, byear):
 
@@ -73,3 +77,16 @@ def insert_artist(id, name, surname, byear):
 
     finally:
         con.close()
+
+
+def render_success():
+    st = '''<meta charset = "utf-8"/>
+            <h1>Database updated successfully!</h1>
+            <form action="/insert_artist">
+            <input type="submit" value="Insert new artist">
+            </form>
+            <form action="/">
+            <input type="submit" value="Main menu">
+            </form>
+            '''
+    return st
