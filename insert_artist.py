@@ -53,18 +53,17 @@ def insert_artist_form():
 @post('/insert_artist')
 def get_insert_artist():
     national_id = request.forms.getunicode('National_id')
-    national_id = int(national_id)
     name = request.forms.getunicode('Name')
     surname = request.forms.getunicode('Surname')
     birth_year = request.forms.getunicode('Birth_year')
     birth_year = int(birth_year)
-    insert_artist(national_id,name,surname,birth_year)
+    insert_artist(national_id, name, surname, birth_year)
 
     st = render_success()
     return st
 
 
-def insert_artist(id, name, surname, byear):
+def insert_artist(nid, name, surname, byear):
 
     con = connection()
 
@@ -72,7 +71,7 @@ def insert_artist(id, name, surname, byear):
         with con.cursor() as cursor:
             sql = "insert into `kalitexnis` (`ar_taut`, `onoma`, `epitheto`, `etos_gen`) " \
                   "values (%s, %s, %s, %s)"
-            cursor.execute(sql, (id, name, surname, byear))
+            cursor.execute(sql, (nid, name, surname, byear))
             con.commit()
 
     finally:
