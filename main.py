@@ -9,9 +9,11 @@ from insert_artist import *
 from edit_artist import *
 from insert_artist import *
 
+
 @route('/results')
 def post_songs(data):
     return data
+
 
 @get('/insert_song')
 def insert_song():
@@ -70,6 +72,7 @@ def insert_song():
         </form>
     </div>
     '''
+
 
 @post('/insert_song')
 def get_insert_songs():
