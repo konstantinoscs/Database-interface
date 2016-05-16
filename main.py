@@ -5,6 +5,7 @@ from bottle import get, post, request, run, route
 from home_page import *
 from search_songs import*
 from artists import *
+from insert_artist import *
 
 @get('/update_n_search')
 def update():
@@ -62,8 +63,8 @@ def get_data_update():
     birth_year_from=request.forms.getunicode('Birth_year_from')
     birth_year_to=request.forms.getunicode('Birth_year_to')
     ptype=request.forms.getunicode('type')
-    birth_year_from=int(birth_year_from)
-    birth_year_to=int(birth_year_to)
+    #birth_year_from=int(birth_year_from)
+    #birth_year_to=int(birth_year_to)
     data = find_artists(name, surname, birth_year_from, birth_year_to, ptype)
     st = render_artists_table(data)
     return st
@@ -80,7 +81,7 @@ def insert_artist_form():
     <div>
         <div style="font-size:200%;"><strong>Insert Artist</strong></div>
         <br>
-        <form>
+        <form method="POST" action="/insert_artist">
             <fieldset>
                 <table style="">
                     <tr>
@@ -121,10 +122,13 @@ def insert_artist_form():
 @post('/insert_artist')
 def get_insert_artist():
     national_id=request.forms.getunicode('National_id')
+    national_id=int(national_id)
     name=request.forms.getunicode('Name')
     surname=request.forms.getunicode('Surname')
     birth_year=request.forms.getunicode('Birth_year')
     birth_year = int(birth_year)
+    insert_artist(national_id,name,surname,birth_year)
+
 
 
 @get('/insert_song')

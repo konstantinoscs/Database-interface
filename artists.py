@@ -20,13 +20,18 @@ def find_artists(name, surname, byear_from, byear_to, ptype):
 
 def render_artists_table(data):
     st = '<meta charset = "utf-8"/>'
-    st += "<h1>View Artist Results</h1><hr>" \
-          "<table style=" ">" \
-          "<tr><td><strong>National Id</strong></td>" \
-          "<td><strong>Name</strong></td>" \
-          "<td><strong>Surname</strong></td>" \
-          "<td><strong>Birth Year</strong></td>" \
-          "<td><strong>Edit?</strong></td></tr>"
+    st += '''<div>
+          <div style="font-size:200%;"><strong>View Artist Results</strong></div>
+          <br>
+          <fieldset>
+          <table style=" ">
+          <tr>
+          <td><strong>National Id</strong></td>
+          <td><strong>Name</strong></td>
+          <td><strong>Surname</strong></td>
+          <td><strong>Birth Year</strong></td>
+          <td><strong>Edit?</strong></td>
+          </tr>'''
     for row in data:
         st += "<tr>"
         for i in row:
@@ -39,5 +44,7 @@ def render_artists_table(data):
         st +="<td>button</td>"
         st += "</tr>"
     st += "</table><hr>"
+    st += "</fieldset"
+    st += "</div"
 
     return st
