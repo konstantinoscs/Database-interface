@@ -1,5 +1,7 @@
 # -*- coding: utf-8 -*-
+
 import pymysql
+from bottle import get, post, request
 from connection import *
 
 @get('/insert_artist')
@@ -45,6 +47,7 @@ def insert_artist_form():
         </form>
     </div>
     '''
+
 
 @post('/insert_artist')
 def get_insert_artist():
