@@ -34,6 +34,7 @@ def render_artists_table(data):
           </tr>'''
     for row in data:
         st += "<tr>"
+        nid=row[0].encode('utf-8')
         for i in row:
             st += "<td>"
             if isinstance(i, int):
@@ -41,7 +42,9 @@ def render_artists_table(data):
             else:
                 st += i.encode('utf-8')
             st += "</td>"
-        st +="<td>button</td>"
+        st += '<td><form method="POST" action="/edit_artist/'
+        st += nid
+        st += '"><input type="submit" value="Edit me!"></form></td>'
         st += "</tr>"
     st += "</table><hr>"
     st += "</fieldset"
