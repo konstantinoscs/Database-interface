@@ -59,7 +59,7 @@ def get_data_update():
     surname=request.forms.getunicode('Surname')
     birth_year_from=request.forms.getunicode('Birth_year_from')
     birth_year_to=request.forms.getunicode('Birth_year_to')
-    ptype=request.forms.getunicode('type')
+    ptype = request.forms.getunicode('type')
     birth_year_from=int(birth_year_from)
     birth_year_to=int(birth_year_to)
     data = find_artists(name, surname, birth_year_from, birth_year_to, ptype)

@@ -59,11 +59,11 @@ def insert_artist_form():
 
 @post('/insert_artist')
 def get_insert_artist():
-    national_id=request.forms.getunicode('National_id')
-    national_id=int(national_id)
-    name=request.forms.getunicode('Name')
-    surname=request.forms.getunicode('Surname')
-    birth_year=request.forms.getunicode('Birth_year')
+    national_id = request.forms.getunicode('National_id')
+    national_id = int(national_id)
+    name = request.forms.getunicode('Name')
+    surname = request.forms.getunicode('Surname')
+    birth_year = request.forms.getunicode('Birth_year')
     birth_year = int(birth_year)
     insert_artist(national_id,name,surname,birth_year)
 
