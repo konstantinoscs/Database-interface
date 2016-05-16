@@ -63,8 +63,8 @@ def get_data_update():
     birth_year_from=request.forms.getunicode('Birth_year_from')
     birth_year_to=request.forms.getunicode('Birth_year_to')
     ptype=request.forms.getunicode('type')
-    #birth_year_from=int(birth_year_from)
-    #birth_year_to=int(birth_year_to)
+    birth_year_from=int(birth_year_from)
+    birth_year_to=int(birth_year_to)
     data = find_artists(name, surname, birth_year_from, birth_year_to, ptype)
     st = render_artists_table(data)
     return st
@@ -196,5 +196,7 @@ def get_insert_songs():
 
 run(host='localhost', port=8080, debug=True)
 #data=find_song('ΦΡΑΓΚΟΣΥΡΙΑΝΗ', 1938, 'COLUMBIA')
+#data = find_artists('ΓΙΑΝΝΗΣ', 'ΣΠΑΝΟΣ', 0, 2000 ,0)
+#st = render_artists_table(data)
 #st=create_table(data)
 #print st

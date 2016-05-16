@@ -24,18 +24,11 @@ def find_song(title, year, company):
 
 
 def create_table(data):
-    st='<meta charset = "utf-8"/>'
-    st+='''<div>
-    <div style="font-size:200%;"><strong>Presentation of Songs-Results</strong></div>
-    <br>
-    <fieldset>
-    <table style="">
-    <tr>
-    <td><strong>Τίτλος</strong></td>
+    st='<meta charset = "utf-8"/> <table style=" ">'
+    st+='''<tr><td><strong>Τίτλος</strong></td>
     <td><strong>Συνθέτης</strong></td>
     <td><strong>Ετος παραγωγής</strong></td>
-    <td><strong>Στιχουργός</strong></td>
-    </tr>'''
+    <td><strong>Στιχουργός</strong></td></tr>'''
     for row in data:
         st += "<tr>"
         for i in row:
@@ -47,8 +40,6 @@ def create_table(data):
             st += "</td>"
         st += "</tr>"
     st += "</table>"
-    st += "</fieldset>"
-    st += "</div>"
 
     return st
 
