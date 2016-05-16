@@ -17,14 +17,12 @@ def find_song(title, year, company):
                       " `etaireia` = %s and `cd` = `code_cd`" \
                       "group by `titlos`"
                 cursor.execute(sql, (title, year, company))
-                data = cursor.fetchall()
             elif (title != "") and (year != "") and (company == ""):
                 sql = "select `titlos`, `sinthetis`, `etos_par`, `stixourgos` " \
                       "from `tragoudi` " \
                       "where `titlos` = %s and `etos_par` = %s " \
                       "group by `titlos`"
                 cursor.execute(sql, (title, year))
-                data = cursor.fetchall()
             elif (title != "") and (year == "") and (company != ""):
                 sql = "select `titlos`, `sinthetis`, `etos_par`, `stixourgos` " \
                       "from `tragoudi`, `singer_prod`, `cd_production` " \
@@ -32,14 +30,12 @@ def find_song(title, year, company):
                       " `etaireia` = %s and `cd` = `code_cd`" \
                       "group by `titlos`"
                 cursor.execute(sql, (title, company))
-                data = cursor.fetchall()
             elif (title != "") and (year == "") and (company == ""):
                 sql = "select `titlos`, `sinthetis`, `etos_par`, `stixourgos` " \
                       "from `tragoudi` " \
                       "where `titlos` = %s " \
                       "group by `titlos`"
                 cursor.execute(sql, (title))
-                data = cursor.fetchall()
             elif (title == "") and (year != "") and (company != ""):
                 sql = "select `titlos`, `sinthetis`, `etos_par`, `stixourgos` " \
                       "from `tragoudi`, `singer_prod`, `cd_production` " \
@@ -47,13 +43,11 @@ def find_song(title, year, company):
                       " `etaireia` = %s and `cd` = `code_cd`" \
                       "group by `titlos`"
                 cursor.execute(sql, (year, company))
-                data = cursor.fetchall()
             elif (title == "") and (year != "") and (company == ""):
                 sql = "select `titlos`, `sinthetis`, `etos_par`, `stixourgos` " \
                       "from `tragoudi` " \
                       "where `etos_par` = %s "
                 cursor.execute(sql, (year))
-                data = cursor.fetchall()
             elif (title == "") and (year == "") and (company != ""):
                 sql = "select `titlos`, `sinthetis`, `etos_par`, `stixourgos` " \
                       "from `tragoudi`, `singer_prod`, `cd_production` " \
@@ -61,15 +55,13 @@ def find_song(title, year, company):
                       " `etaireia` = %s and `cd` = `code_cd`" \
                       "group by `titlos`"
                 cursor.execute(sql, (company))
-                data = cursor.fetchall()
             elif (title == "") and (year == "") and (company == ""):
                 sql = "select `titlos`, `sinthetis`, `etos_par`, `stixourgos` " \
                       "from `tragoudi` " \
                       "group by `titlos`"
                 cursor.execute(sql)
-                data = cursor.fetchall()
 
-            #data = cursor.fetchall()
+            data = cursor.fetchall()
 
     finally:
         con.close()
