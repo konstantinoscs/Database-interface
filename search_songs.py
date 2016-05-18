@@ -27,8 +27,8 @@ def search_songs():
 
 
                         <tr>
-                            <td> <span align="letf">Company</span></td>
-                            <td> <input align="right" type="text" name="Company" value=""> </td>
+                            <td> <span>Company</span></td>
+                            <td> <input type="text" name="Company" value=""> </td>
                         </tr>
 
 
