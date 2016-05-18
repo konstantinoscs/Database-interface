@@ -79,6 +79,9 @@ def get_insert_songs():
     title=request.forms.get('Title')
     prod_year=request.forms.get('Prod_year')
 
+def test():
+    counter=0
+
 run(host='localhost', port=8080, debug=True)
 #data=find_song('ΦΡΑΓΚΟΣΥΡΙΑΝΗ', 1938, 'COLUMBIA')
 #data = find_artists('ΓΙΑΝΝΗΣ', 'ΣΠΑΝΟΣ', 0, 2000 ,0)

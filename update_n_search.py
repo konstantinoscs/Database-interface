@@ -37,7 +37,7 @@ def update():
                 <tr>
                     <td>Type</td>
                     <td>
-                        <input type="radio" name="type" value="Singer"> Singer <br>
+                        <input type="radio" name="type" value="Singer" checked> Singer <br>
                         <input type="radio" name="type" value="SongWriter"> SongWriter <br>
                         <input type="radio" name="type" value="Composer"> Composer <br>
                     </td>
@@ -60,8 +60,8 @@ def get_data_update():
     birth_year_from=request.forms.getunicode('Birth_year_from')
     birth_year_to=request.forms.getunicode('Birth_year_to')
     ptype = request.forms.getunicode('type')
-    birth_year_from=int(birth_year_from)
-    birth_year_to=int(birth_year_to)
+    #birth_year_from=int(birth_year_from)
+    #birth_year_to=int(birth_year_to)
     data = find_artists(name, surname, birth_year_from, birth_year_to, ptype)
     st = render_artists_table(data)
     return st
