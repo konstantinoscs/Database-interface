@@ -69,8 +69,8 @@ def insert_artist(nid, name, surname, byear):
 
     try:
         with con.cursor() as cursor:
-            sql = "insert into `kalitexnis` (`ar_taut`, `onoma`, `epitheto`, `etos_gen`) " \
-                  "values (%s, %s, %s, %s)"
+            sql ='''insert into `kalitexnis` (`ar_taut`, `onoma`, `epitheto`, `etos_gen`)
+                  values (%s, %s, %s, %s)'''
             cursor.execute(sql, (nid, name, surname, byear))
             con.commit()
 

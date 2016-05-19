@@ -26,7 +26,7 @@ def fetch_data_singers():
 
     try:
         with con.cursor() as cursor:
-            sql = "select `ar_taut` from `kalitexnis`, `singer_prod` where `tragoudistis` = `ar_taut`"
+            sql = "select distinct(`ar_taut`) from `kalitexnis`, `singer_prod` where `tragoudistis` = `ar_taut`"
             cursor.execute(sql)
             data = cursor.fetchall()
 
@@ -42,7 +42,7 @@ def fetch_data_composers():
 
     try:
         with con.cursor() as cursor:
-            sql = "select `ar_taut` from `kalitexnis`, `tragoudi` where `sinthetis` = `ar_taut`"
+            sql = "select distinct(`ar_taut`) from `kalitexnis`, `tragoudi` where `sinthetis` = `ar_taut`"
             cursor.execute(sql)
             data = cursor.fetchall()
 
@@ -58,7 +58,7 @@ def fetch_data_songwriters():
 
     try:
         with con.cursor() as cursor:
-            sql = "select `ar_taut` from `kalitexnis`, `tragoudi` where `stixourgos` = `ar_taut`"
+            sql = "select distinct(`ar_taut`) from `kalitexnis`, `tragoudi` where `stixourgos` = `ar_taut`"
             cursor.execute(sql)
             data = cursor.fetchall()
 
@@ -66,3 +66,26 @@ def fetch_data_songwriters():
         con.close()
 
     return data
+
+
+def insert_song(title, composer, prod_year, cd, singer, songwriter):
+
+    con = connection()
+
+    try:
+        with con.cursor() as cursor:
+             sql = '''insert into `tragoudi` (`titlos`, `sinthetis`, `etos_par`, `stixourgos`)
+                    values (%s, %s, %s, %s)'''
+             cursor.execute(sql, (title, composer, prod_year, songwriter))
+             con.commit()
+
+        with con.cursor() as cursor:
+            sql = '''insert into `singer_prod` (`cd`, `tragoudistis`, `title`)
+                    values (%s, %s, %s, %s)'''
+            cursor.execute(sql, (cd, singer, title))
+            con.commit()
+
+    finally:
+        con.close()
+
+    return

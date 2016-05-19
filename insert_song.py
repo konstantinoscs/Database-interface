@@ -7,7 +7,7 @@ from songs import *
 
 
 @get('/insert_song')
-def insert_song():
+def insert_songs_page():
     cd = fetch_data_cd()
     singers = fetch_data_singers()
     composers = fetch_data_composers()
@@ -37,7 +37,7 @@ def render_insert_page(cd, singers, composers, songwriters):
 
                     <tr>
                         <td>CD</td>
-                        <td><select>
+                        <td><select name="cd">
                     '''
     for row in cd:
         for i in row:
@@ -50,7 +50,7 @@ def render_insert_page(cd, singers, composers, songwriters):
     st += '''</select></td></tr>
         <tr>
         <td>Singer</td>
-        <td><select>'''
+        <td><select name="singer">'''
 
     for row in singers:
         for i in row:
@@ -63,7 +63,7 @@ def render_insert_page(cd, singers, composers, songwriters):
     st += '''</select></td></tr>
         <tr>
         <td>Composer</td>
-        <td><select>'''
+        <td><select name="composer">'''
 
     for row in composers:
         for i in row:
@@ -76,7 +76,7 @@ def render_insert_page(cd, singers, composers, songwriters):
     st += '''</select></td></tr>
         <tr>
         <td>Songwriter</td>
-        <td><select>'''
+        <td><select name="songwriter">'''
 
     for row in songwriters:
         for i in row:
@@ -99,6 +99,11 @@ def render_insert_page(cd, singers, composers, songwriters):
 
 @post('/insert_song')
 def get_insert_songs():
-    title=request.forms.get('Title')
-    prod_year=request.forms.get('Prod_year')
+    title=request.forms.getunicode('Title')
+    prod_year=request.forms.getunicode('Prod_year')
+    cd=request.forms.getunicode('cd')
+    singer=request.forms.getunicode('singer')
+    composer=request.forms.getunicode('composer')
+    songwriter=request.forms.getunicode('songwriter')
+    insert_song(title, composer, prod_year, cd, singer, songwriter)
 
