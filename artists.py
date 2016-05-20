@@ -103,7 +103,7 @@ def render_artists_table(data):
           "<td><strong>Edit?</strong></td></tr>"
     for row in data:
         st += "<tr>"
-        nid=row[0].encode('utf-8')
+        nid = row[0].encode('utf-8')
         for i in row:
             st += "<td>"
             if isinstance(i, int):
@@ -113,7 +113,7 @@ def render_artists_table(data):
             st += "</td>"
         st += '<td><form method="GET" action="/edit_artist/'
         st += nid
-        st += '" vertical-align="middle"><input type="submit" value="Edit Me!"></td>'
+        st += '" vertical-align="middle"><input type="submit" value="Edit Me!"></form></td>'
         st += "</tr>"
     st += "</table><hr>"
 
