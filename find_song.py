@@ -77,22 +77,30 @@ def find_song(title, year, company):
 
 
 def create_table(data):
-    st = '<meta charset = "utf-8"/> <table style=" ">'
-    st += '''<tr><td><strong>Τίτλος</strong></td>
-    <td><strong>Συνθέτης</strong></td>
-    <td><strong>Ετος παραγωγής</strong></td>
-    <td><strong>Στιχουργός</strong></td></tr>'''
+    st = '''<!DOCTYPE html>
+        <head><meta charset="UTF-8">
+        <style>
+        table, th, td {
+        border: 2px solid black;
+        }
+        </style></head>
+        <body>
+        <table style=" ">
+        <tr><th>Τίτλος</th>
+        <th>Συνθέτης</th>
+        <th>Ετος παραγωγής</th>
+        <th>Στιχουργός</th></tr>'''
     for row in data:
         st += "<tr>"
         for i in row:
-            st += "<td>"
+            st += '<td align="center">'
             if isinstance(i, int):
                 st += str(i)
             else:
                 st += i.encode('utf-8')
             st += "</td>"
         st += "</tr>"
-    st += "</table>"
+    st += "</table></body>"
 
     return st
 

@@ -109,5 +109,6 @@ def get_insert_songs():
     singer = request.forms.getunicode('singer')
     composer = request.forms.getunicode('composer')
     songwriter = request.forms.getunicode('songwriter')
-    insert_song(title, composer, prod_year, cd, singer, songwriter)
+    st = insert_song(title, composer, prod_year, cd, singer, songwriter)
+    return st
 
