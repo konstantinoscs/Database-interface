@@ -94,14 +94,20 @@ def find_artists(name, surname, byear_from, byear_to, ptype):
 
 def render_artists_table(data):
     st = '''<!DOCTYPE html>
-    <head><meta charset="UTF-8"></head>'''
+        <head><meta charset="UTF-8">
+        <style>
+        td{
+        text-align:center;
+        }
+        </style>
+        </head>'''
     st += '''<body><h1>View Artist Results</h1><hr>
           <table>
-          <tr><td><strong>National Id</strong></td>
-          <td><strong>Name</strong></td>
-          <td><strong>Surname</strong></td>
-          <td><strong>Birth Year</strong></td>
-          <td><strong>Edit?</strong></td></tr>'''
+          <tr><th>National Id</th>
+          <th>Name</strong></th>
+          <th>Surname</th>
+          <th>Birth Year</th>
+          <th>Edit?</th></tr>'''
     for row in data:
         st += "<tr>"
         nid = row[0].encode('utf-8')
