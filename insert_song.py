@@ -18,7 +18,10 @@ def insert_songs_page():
 
 def render_insert_page(cd, singers, composers, songwriters):
 
-    st = '''<div>
+    st = '''<!DOCTYPE html>
+        <head><meta charset="UTF-8"></head>
+        <body>
+        <div>
         <div style="font-size:200%;"><strong>Insert Song</strong></div>
         <br>
 
@@ -92,18 +95,19 @@ def render_insert_page(cd, singers, composers, songwriters):
         </table>
         </fieldset>
         </form>
-        </div>'''
+        </div>
+        </body>'''
 
     return st
 
 
 @post('/insert_song')
 def get_insert_songs():
-    title=request.forms.getunicode('Title')
-    prod_year=request.forms.getunicode('Prod_year')
-    cd=request.forms.getunicode('cd')
-    singer=request.forms.getunicode('singer')
-    composer=request.forms.getunicode('composer')
-    songwriter=request.forms.getunicode('songwriter')
+    title = request.forms.getunicode('Title')
+    prod_year = request.forms.getunicode('Prod_year')
+    cd = request.forms.getunicode('cd')
+    singer = request.forms.getunicode('singer')
+    composer = request.forms.getunicode('composer')
+    songwriter = request.forms.getunicode('songwriter')
     insert_song(title, composer, prod_year, cd, singer, songwriter)
 

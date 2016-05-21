@@ -37,7 +37,9 @@ def find_and_fill(nid):
 
 
 def render_table(data, nid):
-    st = '''<meta charset = "utf-8"/>
+    st = '''<!DOCTYPE html>
+    <head><meta charset="UTF-8"></head>
+    <body>
     <h1>Update Artist Information</h1><hr>
     <form method="POST" action="/edit_artist/'''
     st += nid
@@ -56,7 +58,7 @@ def render_table(data, nid):
     st += '''"</td></tr>
     <tr><td></td>
     <td><input type="submit" value="Update Information"> </td>
-    </table></form>'''
+    </table></form></body>'''
 
     return st
 

@@ -6,7 +6,8 @@ from artists import *
 
 @get('/update_n_search')
 def update():
-    return '''
+    return '''<!DOCTYPE html>
+        <head><meta charset="UTF-8"></head>
         <div>
         <div style="font-size:200%;"><strong>Presentation of Artists</strong></div>
         <br>
