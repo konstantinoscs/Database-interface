@@ -116,7 +116,10 @@ def render_artists_table(data):
             if isinstance(i, int):
                 st += str(i)
             else:
-                st += i.encode('utf-8')
+                if i == '':
+                    st += '-'
+                else:
+                    st += i.encode('utf-8')
             st += "</td>"
         st += '<td><form method="GET" action="/edit_artist/'
         st += nid
