@@ -16,25 +16,25 @@ def insert_artist_form():
                 <table style="">
                     <tr>
                         <td> <span align="left">National Id </span></td>
-                        <td> <input align="right" type="text" name="National_id" value=""> </td>
+                        <td> <input align="right" type="text" name="National_id" required value=""> </td>
                     </tr>
 
 
                     <tr>
                         <td> <span align="left">Name</span></td>
-                        <td> <input align="right" type="text" name="Name" value=""> </td>
+                        <td> <input align="right" type="text" name="Name" required value=""> </td>
                     </tr>
 
 
                     <tr>
                         <td> <span align="letf">Surname</span></td>
-                        <td> <input align="right" type="text" name="Surname" value=""> </td>
+                        <td> <input align="right" type="text" name="Surname" required value=""> </td>
                     </tr>
 
 
                     <tr>
                         <td> <span align="left">Birth Year</span></td>
-                        <td> <input align="right" type="number" name="Birth_year" min="1900" max="2016"> </td>
+                        <td> <input align="right" type="number" name="Birth_year" required min="1900" max="2016"> </td>
                     </tr>
 
                     <tr>

@@ -22,7 +22,7 @@ def search_songs():
 
                         <tr>
                             <td> <span align="left">Production Year</span></td>
-                            <td> <input align="right" type="text" name="Prod_year" value=""> </td>
+                            <td> <input align="right" type="text" name="Prod_year" maxlength="4" value=""> </td>
                         </tr>
 
 
@@ -50,8 +50,6 @@ def get_search_songs():
     title = request.forms.getunicode('Song_title')
     year = request.forms.getunicode('Prod_year')
     company = request.forms.getunicode('Company')
-    #if not (year is None):
-    #   year = int(year)
     data = find_song(title, year, company)
     st = create_table(data)
     return st

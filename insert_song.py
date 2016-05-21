@@ -30,12 +30,12 @@ def render_insert_page(cd, singers, composers, songwriters):
                 <table style="">
                     <tr>
                         <td>Title</td>
-                        <td> <input type="text" name="Title" value=""> </td>
+                        <td> <input type="text" name="Title" required value=""> </td>
                     </tr>
 
                     <tr>
                         <td> Production Year</td>
-                        <td> <input type="text" name="Prod_year" value=""> </td>
+                        <td> <input type="text" name="Prod_year" required maxlength="4" value=""> </td>
                     </tr>
 
                     <tr>

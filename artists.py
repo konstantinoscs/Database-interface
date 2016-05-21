@@ -7,10 +7,6 @@ from edit_artist import *
 def find_artists(name, surname, byear_from, byear_to, ptype):
     con = connection()
 
-    "where `onoma` = %s and `epitheto` = %s and " \
-    "`etos_gen` > %s and `etos_gen` < %s"
-
-
     if ( byear_from != "") :
         byear_from = int(byear_from)
 
@@ -31,23 +27,18 @@ def find_artists(name, surname, byear_from, byear_to, ptype):
                 sql += "from `kalitexnis`, `tragoudi` " \
                        "where `ar_taut` = `sinthetis` "
 
-            #flag_name=0;flag_surname=0;flag_by_from=0;flag_by_to=0;
             counter = 0
             if (name != ""):
                 sql += " and `onoma` = %s "
-                #flag_name=1
                 counter += 1
             if (surname != ""):
                 sql += " and `epitheto` = %s "
-                #flag_surname=1
                 counter += 2
             if (byear_from != ""):
                 sql += " and `etos_gen` > %s "
-                #flag_by_from=1
                 counter += 4
             if (byear_to != ""):
                 sql += " and `etos_gen` < %s "
-                #flag_by_to=1
                 counter += 8
 
             if (counter == 0):
@@ -82,9 +73,7 @@ def find_artists(name, surname, byear_from, byear_to, ptype):
                 cursor.execute(sql, (surname, byear_from, byear_to))
             elif (counter == 13):
                 cursor.execute(sql, (name, byear_from, byear_to))
-            #else cursor.execute(sql, (name, surname, byear_from, byear_to),kao)
 
-            #cursor.execute(sql, (name, surname, byear_from, byear_to))
             data = cursor.fetchall()
     finally:
         con.close()

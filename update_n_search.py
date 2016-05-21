@@ -27,12 +27,12 @@ def update():
 
                 <tr>
                     <td>Birth Year - From</td>
-                    <td> <input type="text" name="Birth_year_from" value=""> </td>
+                    <td> <input type="text" name="Birth_year_from" maxlength="4" value=""> </td>
                 </tr>
 
                 <tr>
                     <td> Birth Year - To </td>
-                    <td> <input type="text" name="Birth_year_to" value=""> </td>
+                    <td> <input type="text" name="Birth_year_to" maxlength="4" value=""> </td>
                 </tr>
 
                 <tr>
@@ -61,8 +61,6 @@ def get_data_update():
     birth_year_from=request.forms.getunicode('Birth_year_from')
     birth_year_to=request.forms.getunicode('Birth_year_to')
     ptype = request.forms.getunicode('type')
-    #birth_year_from=int(birth_year_from)
-    #birth_year_to=int(birth_year_to)
     data = find_artists(name, surname, birth_year_from, birth_year_to, ptype)
     st = render_artists_table(data)
     return st

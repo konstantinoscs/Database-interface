@@ -5,11 +5,14 @@ from connection import *
 
 
 def find_song(title, year, company):
+
     if (year != ""):
         year = int(year)
+
     con = connection()
     try:
         with con.cursor() as cursor:
+
             if (title != "") and (year != "") and (company != ""):
                 sql = '''select `titlos`, `sinthetis`, `etos_par`, `stixourgos`
                       from `tragoudi`, `singer_prod` as `sp`, `group_prod` as `gp`, `cd_production`
@@ -89,7 +92,8 @@ def create_table(data):
         <tr><th>Τίτλος</th>
         <th>Συνθέτης</th>
         <th>Ετος παραγωγής</th>
-        <th>Στιχουργός</th></tr>'''
+        <th>Στιχουργός</th>
+        </tr>'''
     for row in data:
         st += "<tr>"
         for i in row:
