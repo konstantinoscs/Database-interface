@@ -85,7 +85,7 @@ def create_table(data):
         }
         </style></head>
         <body>
-        <table style=" ">
+        <table>
         <tr><th>Τίτλος</th>
         <th>Συνθέτης</th>
         <th>Ετος παραγωγής</th>
