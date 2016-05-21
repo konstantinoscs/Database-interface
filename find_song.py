@@ -11,28 +11,28 @@ def find_song(title, year, company):
     try:
         with con.cursor() as cursor:
             if (title != "") and (year != "") and (company != ""):
-                sql = "select `titlos`, `sinthetis`, `etos_par`, `stixourgos` " \
-                      "from `tragoudi`, `singer_prod` as `sp`, `group_prod` as `gp`, `cd_production` " \
-                      "where ( ( `titlos` = `sp`.`title` and `sp`.`cd` = `code_cd` ) or " \
-                      "( `titlos` = `gp`.`title` and `gp`.`cd` = `code_cd` ) ) " \
-                      "and `titlos` = %s and `etos_par` = %s and" \
-                      " `etaireia` = %s " \
-                      "group by `titlos`"
+                sql = '''select `titlos`, `sinthetis`, `etos_par`, `stixourgos`
+                      from `tragoudi`, `singer_prod` as `sp`, `group_prod` as `gp`, `cd_production`
+                      where ( ( `titlos` = `sp`.`title` and `sp`.`cd` = `code_cd` ) or
+                      ( `titlos` = `gp`.`title` and `gp`.`cd` = `code_cd` ) )
+                      and `titlos` = %s and `etos_par` = %s and
+                       `etaireia` = %s
+                      group by `titlos`'''
                 cursor.execute(sql, (title, year, company))
             elif (title != "") and (year != "") and (company == ""):
-                sql = "select `titlos`, `sinthetis`, `etos_par`, `stixourgos` " \
-                      "from `tragoudi` " \
-                      "where `titlos` = %s and `etos_par` = %s " \
-                      "group by `titlos`"
+                sql = '''select `titlos`, `sinthetis`, `etos_par`, `stixourgos`
+                      from `tragoudi`
+                      where `titlos` = %s and `etos_par` = %s
+                      group by `titlos`'''
                 cursor.execute(sql, (title, year))
             elif (title != "") and (year == "") and (company != ""):
-                sql = "select `titlos`, `sinthetis`, `etos_par`, `stixourgos` " \
-                      "from `tragoudi`, `singer_prod` as `sp`, `group_prod` as `gp`, `cd_production` " \
-                      "where ( ( `titlos` = `sp`.`title` and `sp`.`cd` = `code_cd` ) or " \
-                      "( `titlos` = `gp`.`title` and `gp`.`cd` = `code_cd` ) ) " \
-                      "and `titlos` = %s and" \
-                      " `etaireia` = %s " \
-                      "group by `titlos`"
+                sql = '''select `titlos`, `sinthetis`, `etos_par`, `stixourgos`
+                      from `tragoudi`, `singer_prod` as `sp`, `group_prod` as `gp`, `cd_production`
+                      where ( ( `titlos` = `sp`.`title` and `sp`.`cd` = `code_cd` ) or
+                      ( `titlos` = `gp`.`title` and `gp`.`cd` = `code_cd` ) )
+                      and `titlos` = %s and
+                      `etaireia` = %s
+                      group by `titlos`'''
                 cursor.execute(sql, (title, company))
             elif (title != "") and (year == "") and (company == ""):
                 sql = "select `titlos`, `sinthetis`, `etos_par`, `stixourgos` " \
