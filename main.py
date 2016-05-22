@@ -13,8 +13,3 @@ from insert_song import *
 
 
 run(host='localhost', port=8080, debug=True)
-#data=find_song('ΦΡΑΓΚΟΣΥΡΙΑΝΗ', 1938, 'COLUMBIA')
-#data = find_artists('ΓΙΑΝΝΗΣ', 'ΣΠΑΝΟΣ', 0, 2000 ,0)
-#st = render_artists_table(data)
-#st=create_table(data)
-#print st

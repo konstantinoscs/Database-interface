@@ -25,7 +25,7 @@ def find_and_fill(nid):
 
     try:
         with con.cursor() as cursor:
-            sql = '''select `onoma`, `epitheto`, `etos_gen` from kalitexnis
+            sql = '''select `onoma`, `epitheto`, `etos_gen` from `kalitexnis`
                 where `ar_taut` = %s'''
             cursor.execute(sql, (nid))
             data = cursor.fetchone()
