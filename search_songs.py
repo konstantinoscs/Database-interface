@@ -3,6 +3,7 @@
 from bottle import get, post, request
 from find_song import *
 
+
 @get('/search_songs')
 def search_songs():
     return '''
